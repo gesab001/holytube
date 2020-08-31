@@ -1,0 +1,19 @@
+<div  [ngSwitch]="banned">
+    <div *ngSwitchCase="true">
+          <p>this video is unholy!</p>
+          <h1>List of banned video ids</h1>
+          <ol>
+            <li *ngFor="let item of bannedVideos">{{item}}</li>
+          </ol>
+
+    </div>
+
+    <div *ngSwitchCase="false">
+            <iframe [src]="safeSrc" title="W3Schools Free Online Web Tutorials">
+            </iframe>
+    </div>
+</div>
+
+
+
+

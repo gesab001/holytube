@@ -1,8 +1,12 @@
-<ol *ngFor="let item of data">
-<li><a [href]="getSafeSrc(item.id.videoId)" >{{item.snippet.title}}</a></li>
+<button (click)="clearBanList()">Clear ban list</button>
+<ol >
+<div *ngFor="let item of data" >
+
+  <li  *ngIf="item.id.videoId" > <a [routerLink]="['/watch', item.id.videoId]" routerLinkActive="active" class="btn btn-info" role="button">{{item.snippet.title}}</a><button (click)="banThis(item.id.videoId)">ban this video</button><button (click)="liftBan(item.id.videoId)">lift ban</button>
+ </li>
+</div>
 
 </ol>
-
 
 <div class="fixed-bottom bg-light">
   <div class=" d-flex justify-content-around  mb-3 ">

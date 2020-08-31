@@ -13,11 +13,13 @@ import { HttpErrorHandler }     from './http-error-handler.service';
 import { MessageService }       from './message.service';
 import { YoutubeComponent } from './youtube/youtube.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WatchComponent } from './watch/watch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    YoutubeComponent
+    YoutubeComponent,
+    WatchComponent
   ],
   imports: [
     BrowserModule,
