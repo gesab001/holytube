@@ -60,13 +60,13 @@ export class YoutubeComponent implements OnInit {
     var verseInput3 = verseInput2.replace(/\]/gi, '');
     alert(verseInput3);
     if (correctVerse===verseInput3){
-        alert("same");
         var jsondata = this.getData();
         const index = jsondata.indexOf(videoId, 0);
         if (index > -1) {
            jsondata.splice(index, 1);
            this.saveToLocalStorage(jsondata);
         }
+
     }else{
        alert("wrong verse");
     }

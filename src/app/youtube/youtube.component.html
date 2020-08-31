@@ -1,3 +1,4 @@
+{{data | json}}
 <button (click)="clearBanList()">Clear ban list</button>
 <ol >
 <div *ngFor="let item of data" >
@@ -7,6 +8,8 @@
 </div>
 
 </ol>
+
+{{getData()| json}}
 
 <div class="fixed-bottom bg-light">
   <div class=" d-flex justify-content-around  mb-3 ">
