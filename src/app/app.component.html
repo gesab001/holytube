@@ -1,7 +1,23 @@
 
-<input [(ngModel)]="searchKeyword">
 
- <a [routerLink]="['/search', searchKeyword]" routerLinkActive="active" class="btn btn-info" role="button">Search</a>
-<p>{{searchKeyword}}</p>
 
+
+<div class="d-flex fixed-bottom bg-light justify-content-around ">
+    <a class="d-flex flex-column align-items-center" routerLink="/search" routerLinkActive="active">
+          <i class="fa fa-search fa-2x mw-100"></i>
+          <span>Search</span>
+    </a>
+    <a class="d-flex flex-column align-items-center" routerLink="/history" routerLinkActive="active">
+          <i class="fa fa-history fa-2x mw-100"></i>
+          <span>History</span>
+    </a>
+    <a class="d-flex flex-column align-items-center" routerLink="/favorites" routerLinkActive="active">
+          <i class="fa fa-heart fa-2x mw-100"></i>
+          <span>Favorites</span>
+    </a>
+    <a class="d-flex flex-column align-items-center" routerLink="/settings" routerLinkActive="active">
+          <i class="fa fa-cog fa-2x mw-100"></i>
+          <span>Settings</span>
+    </a>   
+</div>
 <router-outlet></router-outlet>

@@ -1,0 +1,4 @@
+<input [(ngModel)]="searchKeyword">
+
+ <a [routerLink]="['/results', searchKeyword]" routerLinkActive="active" class="btn btn-info" role="button">Search</a>
+<p>{{searchKeyword}}</p>

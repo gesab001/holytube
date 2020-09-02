@@ -14,12 +14,20 @@ import { MessageService }       from './message.service';
 import { YoutubeComponent } from './youtube/youtube.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WatchComponent } from './watch/watch.component';
+import { SearchComponent } from './search/search.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { HistoryComponent } from './history/history.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     YoutubeComponent,
-    WatchComponent
+    WatchComponent,
+    SearchComponent,
+    FavoritesComponent,
+    HistoryComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

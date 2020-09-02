@@ -31,7 +31,7 @@ export class WatchComponent implements OnInit {
   }
 
   public getSafeSrc(videoId: string): SafeResourceUrl {
-     this.stringurl = "https://www.youtube.com/embed/"+videoId;
+     this.stringurl = "https://www.youtube.com/embed/"+videoId + "?rel=0";
      this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(this.stringurl);
      return this.safeSrc;
   }
