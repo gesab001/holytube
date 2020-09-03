@@ -1,0 +1,90 @@
+{
+  "configVersion": 1,
+  "timestamp": 1599170605847,
+  "index": "/holytube/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/holytube/favicon.ico",
+        "/holytube/index.html",
+        "/holytube/main-es2015.7bde9f11c22a6ef33602.js",
+        "/holytube/main-es5.7bde9f11c22a6ef33602.js",
+        "/holytube/manifest.webmanifest",
+        "/holytube/polyfills-es2015.f332a089ad1600448873.js",
+        "/holytube/polyfills-es5.177e85a9724683782539.js",
+        "/holytube/runtime-es2015.0dae8cbc97194c7caed4.js",
+        "/holytube/runtime-es5.0dae8cbc97194c7caed4.js",
+        "/holytube/styles.f52187462d1cfca0d78e.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/holytube/assets/icons/icon-114x114.png",
+        "/holytube/assets/icons/icon-120x120.png",
+        "/holytube/assets/icons/icon-128x128.png",
+        "/holytube/assets/icons/icon-144x144.png",
+        "/holytube/assets/icons/icon-152x152.png",
+        "/holytube/assets/icons/icon-180x180.png",
+        "/holytube/assets/icons/icon-192x192.png",
+        "/holytube/assets/icons/icon-384x384.png",
+        "/holytube/assets/icons/icon-512x512.png",
+        "/holytube/assets/icons/icon-57x57.png",
+        "/holytube/assets/icons/icon-72x72.png",
+        "/holytube/assets/icons/icon-76x76.png",
+        "/holytube/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/holytube/assets/icons/icon-114x114.png": "87defce9bc494b54ef9e78d7efd030f5afbbcf6e",
+    "/holytube/assets/icons/icon-120x120.png": "adb9fa54b42940ee1b28bbbab6b9a93bbfb55234",
+    "/holytube/assets/icons/icon-128x128.png": "59751bab59df8e6d5545762134a9da8d3a17e969",
+    "/holytube/assets/icons/icon-144x144.png": "a229b3617949d69e575308eb3d29662b1dd0eabf",
+    "/holytube/assets/icons/icon-152x152.png": "5a7310f24380edb434c4d871653dbea15ddb6156",
+    "/holytube/assets/icons/icon-180x180.png": "1d3e07b28f565fadc5aa7cdfc02f0282cd7fb87f",
+    "/holytube/assets/icons/icon-192x192.png": "72bbce50c2c8c7578e7418f329ce080af9cffff5",
+    "/holytube/assets/icons/icon-384x384.png": "f47c75336f46116da7a17dd2da4ad13445e85d84",
+    "/holytube/assets/icons/icon-512x512.png": "dadace23d360b1a4bde51bb350df7a6abce9242c",
+    "/holytube/assets/icons/icon-57x57.png": "1679efee90a37f297c7823df9600df6dea480580",
+    "/holytube/assets/icons/icon-72x72.png": "3208db366086efecd4551ddc68179bc2dcaa3ce2",
+    "/holytube/assets/icons/icon-76x76.png": "c19faaa7a3c45183def21a51b217f71d5a5d5b10",
+    "/holytube/assets/icons/icon-96x96.png": "649fa6ba94fe1d3d2e1ffa2f1fe7eed4eaca61a7",
+    "/holytube/favicon.ico": "72bbce50c2c8c7578e7418f329ce080af9cffff5",
+    "/holytube/index.html": "07af2afa3808a96e3fbff56f33ed477be730f9cd",
+    "/holytube/main-es2015.7bde9f11c22a6ef33602.js": "fe982d200e5c15e74675f70ad81dd60e3f371186",
+    "/holytube/main-es5.7bde9f11c22a6ef33602.js": "569f2491cead0f22415f8bc8b79f66c854243c9c",
+    "/holytube/manifest.webmanifest": "f8a7a76ad9db67569a66898f11313745674ed934",
+    "/holytube/polyfills-es2015.f332a089ad1600448873.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
+    "/holytube/polyfills-es5.177e85a9724683782539.js": "8aa26ea87b9958c6bd13b7c257c0e9940438e684",
+    "/holytube/runtime-es2015.0dae8cbc97194c7caed4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/holytube/runtime-es5.0dae8cbc97194c7caed4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/holytube/styles.f52187462d1cfca0d78e.css": "507c9903e3b5f1b7df98b4ce2d9b9656a18abae0"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
