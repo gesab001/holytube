@@ -19,21 +19,29 @@ export class YoutubeComponent implements OnInit {
   message: string;
   data: any;
   subscription;
+  datahistory: any = {};
 
   constructor(private route: ActivatedRoute, private youtubeService: YoutubeService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
-
+     this.datahistory = this.youtubeService.getPastSearchResults();
      this.route.paramMap.subscribe(params => { 
         this.keyword = params.get('keyword');
-        this.loadData(this.keyword);
+        if (this.datahistory[this.keyword]){
+
+           this.data = this.datahistory[this.keyword];
+        }
+        else {
+
+           this.loadData(this.keyword);
+        }
      });
 
   }
 
  loadData(keyword: string) {
     this.subscription = this.youtubeService.getData(keyword).subscribe(
-      res => (this.data = res["items"]), 
+      res => (this.data = res["items"], this.datahistory[this.keyword] = this.data, this.youtubeService.savePastSearchResults(this.datahistory),      this.datahistory = this.youtubeService.getPastSearchResults()), 
       error => console.log(error),
     );
   }
@@ -46,10 +54,10 @@ export class YoutubeComponent implements OnInit {
   }
 
   banThis(videoId: string){
-    var jsondata = this.getData();
+    var jsondata = this.youtubeService.getBannedVideos();
     if (!jsondata.includes(videoId)){
       jsondata.push(videoId);
-     this.saveToLocalStorage(jsondata);
+     this.youtubeService.saveBannedVideos(jsondata);
     }
   }
 
@@ -61,11 +69,11 @@ export class YoutubeComponent implements OnInit {
     alert(verseInput3);
     if (correctVerse===verseInput3){
 
-        var jsondata = this.getData();
+        var jsondata = this.youtubeService.getBannedVideos();
         const index = jsondata.indexOf(videoId, 0);
         if (index > -1) {
            jsondata.splice(index, 1);
-           this.saveToLocalStorage(jsondata);
+           this.youtubeService.saveBannedVideos(jsondata);
         }
     }else{
        alert("wrong verse");
@@ -75,7 +83,7 @@ export class YoutubeComponent implements OnInit {
 
   clearBanList(){
       var jsondata = [];
-      this.saveToLocalStorage(jsondata);
+      this.youtubeService.saveBannedVideos(jsondata);
   }
 
   saveToLocalStorage(jsondata){

@@ -39,6 +39,51 @@ export class YoutubeService {
   getCachedData(){
           return this._data;
   }
+
+  saveBannedVideos(jsondata){
+    // Check browser support
+    if (typeof(Storage) !== "undefined") {
+
+      localStorage.setItem("bannedVideos", JSON.stringify(jsondata));
+    
+    } 
+  }
+
+  savePastSearchResults(jsondata){
+
+    // Check browser support
+    if (typeof(Storage) !== "undefined") {
+
+      localStorage.setItem("pastSearchResults", JSON.stringify(jsondata));
+    
+    } 
+  }
+
+  getBannedVideos(){
+      var jsondata = [];
+      if("bannedVideos" in localStorage){
+      
+        jsondata = JSON.parse(localStorage.getItem("bannedVideos"));
+
+      } else {
+
+       jsondata = [];
+      }
+      return jsondata;
+  }
+
+  getPastSearchResults(){
+      var jsondata = {};
+      if("pastSearchResults" in localStorage){
+      
+        jsondata = JSON.parse(localStorage.getItem("pastSearchResults"));
+
+      } else {
+
+       jsondata = {"hello": "test"};
+      }
+      return jsondata;
+  }
 }
 
 

@@ -18,6 +18,8 @@ import { SearchComponent } from './search/search.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { HistoryComponent } from './history/history.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { SettingsComponent } from './settings/settings.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [HttpErrorHandler, MessageService],
   bootstrap: [AppComponent]
