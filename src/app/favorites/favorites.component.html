@@ -1,1 +1,11 @@
-<p>favorites works!</p>
+<h1>My Favorite Videos</h1>
+
+
+<ol >
+<div *ngFor="let item of favoriteVideos | keyvalue" >
+  
+  <li *ngIf="item.value!=''" > <a [routerLink]="['/watch', item.key, item.value]" routerLinkActive="active" class="btn btn-info" role="button">{{item.value}}</a>
+ </li>
+</div>
+
+</ol>

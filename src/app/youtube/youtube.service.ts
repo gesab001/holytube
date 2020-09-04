@@ -59,6 +59,28 @@ export class YoutubeService {
     } 
   }
 
+  saveFavoriteVideos(jsondata){
+   // Check browser support
+    if (typeof(Storage) !== "undefined") {
+
+      localStorage.setItem("favoriteVideos", JSON.stringify(jsondata));
+    
+    } 
+  }
+
+  getFavoriteVideos(){
+      var jsondata = {};
+      if("favoriteVideos" in localStorage){
+      
+        jsondata = JSON.parse(localStorage.getItem("favoriteVideos"));
+
+      } else {
+
+       jsondata = {"videoId": ""};
+      }
+      return jsondata;
+  }
+
   getBannedVideos(){
       var jsondata = [];
       if("bannedVideos" in localStorage){
@@ -80,7 +102,7 @@ export class YoutubeService {
 
       } else {
 
-       jsondata = {"hello": "test"};
+       jsondata = {};
       }
       return jsondata;
   }

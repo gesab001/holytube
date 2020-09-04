@@ -1,1 +1,11 @@
 <p>history works!</p>
+{{datahistory | json}}
+
+<ol >
+<div *ngFor="let searchKeyword of datahistory | keyvalue" >
+  <li> 
+      <a [routerLink]="['/results', searchKeyword.key]" routerLinkActive="active" class="btn btn-info" role="button">{{searchKeyword.key}}</a>
+ </li>
+</div>
+
+</ol>

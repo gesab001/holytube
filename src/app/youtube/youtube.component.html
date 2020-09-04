@@ -3,7 +3,7 @@
 <ol >
 <div *ngFor="let item of data" >
 
-  <li  *ngIf="item.id.videoId" > <a [routerLink]="['/watch', item.id.videoId]" routerLinkActive="active" class="btn btn-info" role="button">{{item.snippet.title}}</a><button (click)="banThis(item.id.videoId)">ban this video</button><button (click)="liftBan(item.id.videoId)">lift ban</button>
+  <li  *ngIf="item.id.videoId" > <a [routerLink]="['/watch', item.id.videoId, item.snippet.title]" routerLinkActive="active" class="btn btn-info" role="button">{{item.snippet.title}}</a><button (click)="banThis(item.id.videoId)">ban this video</button><button (click)="liftBan(item.id.videoId)">lift ban</button>
  </li>
 </div>
 
