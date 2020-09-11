@@ -12,7 +12,7 @@ export class FavoritesComponent implements OnInit {
   constructor(private youtubeService: YoutubeService) { }
   favoriteVideos: any;
   ngOnInit(): void {
-     this.favoriteVideos = {};
+     this.favoriteVideos = [];
      this.favoriteVideos = this.youtubeService.getFavoriteVideos();
   }
 

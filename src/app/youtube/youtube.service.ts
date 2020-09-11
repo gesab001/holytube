@@ -14,7 +14,7 @@ export class YoutubeService {
   _data: any = null;
 
   private handleError: HandleError;
-
+  url_latest_videos = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title))&part=snippet&channelId=UCo7QR7fmX24_uxcFJ6fSdNA&q=-Hilari&maxResults=1&order=date&type=video&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA';
   url = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title))&part=snippet&maxResults=1&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&q=';  constructor(
     private http: HttpClient,
     httpErrorHandler: HttpErrorHandler) {
@@ -31,6 +31,16 @@ export class YoutubeService {
     if (!this._data) {
       this._data = this.http
         .get(this.url+keyword)
+        .pipe(publishReplay(1), refCount());
+    }
+    return this._data;
+  }
+
+  getLatestVideos() {
+    this.clearCache();
+    if (!this._data) {
+      this._data = this.http
+        .get(this.url_latest_videos)
         .pipe(publishReplay(1), refCount());
     }
     return this._data;
