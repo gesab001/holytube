@@ -20,6 +20,7 @@ import { HistoryComponent } from './history/history.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { environment } from '../environments/environment';
     SearchComponent,
     FavoritesComponent,
     HistoryComponent,
-    SettingsComponent
+    SettingsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

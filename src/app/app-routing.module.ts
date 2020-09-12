@@ -7,8 +7,9 @@ import {FavoritesComponent} from './favorites/favorites.component';
 import {HistoryComponent} from './history/history.component';
 import {SettingsComponent} from './settings/settings.component';
 import {AppComponent} from './app.component';
+import {HomeComponent} from './home/home.component';
 const routes: Routes = [   
-  {path: '', component: AppComponent},
+  {path: '', component: HomeComponent},
   {path: 'results/:keyword', component: YoutubeComponent},
   {path: 'search', component: SearchComponent},
   {path: 'watch/:videoId/:title', component: WatchComponent},

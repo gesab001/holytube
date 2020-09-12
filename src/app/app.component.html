@@ -1,10 +1,5 @@
-<ol >
-<div *ngFor="let item of data" >
+<router-outlet></router-outlet>
 
-  <li> <a [routerLink]="['/watch', item.id.videoId, item.snippet.title]" routerLinkActive="active">{{item.snippet.title}}</a></li>
-</div>
-
-</ol>
 
 <div class="d-flex fixed-bottom bg-light justify-content-around ">
    <a class="d-flex flex-column align-items-center" routerLink="/" routerLinkActive="active">
@@ -29,4 +24,4 @@
     </a>   
 </div>
 
-<router-outlet></router-outlet>
+
