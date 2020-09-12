@@ -11,19 +11,13 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class AppComponent {
   title = 'holytube';
-  searchKeyword = ""; 
-  data: any; 
-  subscription;
-  constructor( private youtubeService: YoutubeService, private sanitizer: DomSanitizer) {}
+
+
+  constructor( ) {}
 
  ngOnInit(): void {
-      this.loadData();
+
   }
 
- loadData() {
-    this.subscription = this.youtubeService.getLatestVideos().subscribe(
-      res => (this.data = res["items"]), 
-      error => console.log(error),
-    );
-  }
+ 
 }

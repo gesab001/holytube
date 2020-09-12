@@ -12,16 +12,18 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
- data: any; 
+  data: any; 
+  numberofvideos:number;
   subscription;
   constructor( private youtubeService: YoutubeService, private sanitizer: DomSanitizer) {}
 
  ngOnInit(): void {
+      this.numberofvideos = 1;
       this.loadData();
   }
 
  loadData() {
-    this.subscription = this.youtubeService.getLatestVideos().subscribe(
+    this.subscription = this.youtubeService.getLatestVideos(this.numberofvideos).subscribe(
       res => (this.data = res["items"]), 
       error => console.log(error),
     );

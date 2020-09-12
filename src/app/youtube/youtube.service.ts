@@ -14,7 +14,7 @@ export class YoutubeService {
   _data: any = null;
 
   private handleError: HandleError;
-  url_latest_videos = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title))&part=snippet&channelId=UCo7QR7fmX24_uxcFJ6fSdNA&q=-Hilari&maxResults=7&order=date&type=video&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA';
+  url_latest_videos = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title))&part=snippet&channelId=UCo7QR7fmX24_uxcFJ6fSdNA&q=-Hilari&order=date&type=video&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&maxResults=';
   url = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title))&part=snippet&maxResults=25&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&q=';  constructor(
     private http: HttpClient,
     httpErrorHandler: HttpErrorHandler) {
@@ -36,11 +36,11 @@ export class YoutubeService {
     return this._data;
   }
 
-  getLatestVideos() {
-    //this.clearCache();
+  getLatestVideos(numberofvideos) {
+    this.clearCache();
     if (!this._data) {
       this._data = this.http
-        .get(this.url_latest_videos)
+        .get(this.url_latest_videos+numberofvideos)
         .pipe(publishReplay(1), refCount());
     }
     return this._data;
