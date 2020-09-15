@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { Youtube } from './youtube';
 import { YoutubeService } from './youtube.service';
+import { LocalstorageService } from '../localstorage/localstorage.service';
 
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-youtube',
   templateUrl: './youtube.component.html',
-  providers: [YoutubeService],
+  providers: [YoutubeService, LocalstorageService],
   styleUrls: ['./youtube.component.css']
 })
 export class YoutubeComponent implements OnInit {
@@ -16,14 +17,16 @@ export class YoutubeComponent implements OnInit {
   safeSrc: SafeResourceUrl;
   stringurl: string;
   youtube: Youtube[];
+  numberofsearchresults:number = 1;
   message: string;
   data: any;
   subscription;
   datahistory: any = {};
 
-  constructor(private route: ActivatedRoute, private youtubeService: YoutubeService, private sanitizer: DomSanitizer) {}
+  constructor(private localstorageService: LocalstorageService, private route: ActivatedRoute, private youtubeService: YoutubeService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
+     this.setSearchResultsLimit();
      this.datahistory = this.youtubeService.getPastSearchResults();
      this.route.paramMap.subscribe(params => { 
         this.keyword = params.get('keyword');
@@ -38,9 +41,14 @@ export class YoutubeComponent implements OnInit {
      });
 
   }
-
+ setSearchResultsLimit(){
+    var jsondata = this.localstorageService.get("searchvideoslimit");
+	this.numberofsearchresults = jsondata["limit"];
+    alert(this.numberofsearchresults);
+ }	
+ 
  loadData(keyword: string) {
-    this.subscription = this.youtubeService.getData(keyword).subscribe(
+    this.subscription = this.youtubeService.getData(this.numberofsearchresults, keyword).subscribe(
       res => (this.data = res["items"], this.datahistory[this.keyword] = this.data, this.youtubeService.savePastSearchResults(this.datahistory),      this.datahistory = this.youtubeService.getPastSearchResults()), 
       error => console.log(error),
     );

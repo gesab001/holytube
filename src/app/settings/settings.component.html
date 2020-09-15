@@ -2,3 +2,11 @@
 <button (click)="clearHistory()">clear search history</button>
 <button (click)="clearFavorites()">clear favorites</button>
 <button (click)="clearBanList()">clear ban list</button>
+
+<p>number of videos to show on home</p>
+<input [(ngModel)]="numberofvideos" type="number"/>
+<button (click)="setVideoLimit()">set</button>
+
+<p>number of videos to show on search</p>
+<input [(ngModel)]="numberofsearchresults" type="number"/>
+<button (click)="setSearchResultsLimit()">set</button>

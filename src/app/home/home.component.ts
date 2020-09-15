@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Youtube } from '../youtube/youtube';
 import { YoutubeService } from '../youtube/youtube.service';
+import { LocalstorageService } from '../localstorage/localstorage.service';
 
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  providers: [YoutubeService],
+  providers: [YoutubeService, LocalstorageService],
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
@@ -15,11 +16,12 @@ export class HomeComponent implements OnInit {
   data: any; 
   numberofvideos:number;
   subscription;
-  constructor( private youtubeService: YoutubeService, private sanitizer: DomSanitizer) {}
+  constructor(private localstorageService: LocalstorageService, private youtubeService: YoutubeService, private sanitizer: DomSanitizer) {}
 
  ngOnInit(): void {
-      this.numberofvideos = 1;
+      this.numberofvideos = this.getVideoLimit() ;
       this.loadData();
+	  
   }
 
  loadData() {
@@ -28,5 +30,10 @@ export class HomeComponent implements OnInit {
       error => console.log(error),
     );
   }
+  
+   getVideoLimit(){
+    var jsondata = this.localstorageService.get("latestvideoslimit");
+	return jsondata["limit"];
+ }
 
 }

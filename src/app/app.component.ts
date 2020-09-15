@@ -11,13 +11,9 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class AppComponent {
   title = 'holytube';
+  
 
-
-  constructor( ) {}
-
- ngOnInit(): void {
-
-  }
+  
 
  
 }

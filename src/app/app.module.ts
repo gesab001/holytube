@@ -21,6 +21,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
+import { LocalstorageComponent } from './localstorage/localstorage.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HomeComponent } from './home/home.component';
     FavoritesComponent,
     HistoryComponent,
     SettingsComponent,
-    HomeComponent
+    HomeComponent,
+    LocalstorageComponent
   ],
   imports: [
     BrowserModule,
