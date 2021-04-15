@@ -1,0 +1,16 @@
+.video-container {
+	background-color: black;
+	height: 100%;
+}
+
+.youtube-container {
+	background-color: yellow;
+	height: 100%;
+	width: 100%;
+	padding-bottom: 100px;
+}
+
+.iframe {
+   height: 100%;
+   width: 100%;
+}

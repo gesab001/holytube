@@ -1,4 +1,4 @@
-<div  [ngSwitch]="banned">
+<div  [ngSwitch]="banned" class="video-container">
     <div *ngSwitchCase="true">
           <p>this video is unholy!</p>
           <h1>List of banned video ids</h1>
@@ -8,8 +8,8 @@
 
     </div>
 
-    <div *ngSwitchCase="false">
-            <iframe [src]="safeSrc" title="W3Schools Free Online Web Tutorials" allowFullScreen="allowFullScreen">
+    <div *ngSwitchCase="false" class="youtube-container">
+            <iframe class="iframe" [src]="safeSrc" title="W3Schools Free Online Web Tutorials" allowFullScreen="allowFullScreen">
             </iframe>
             <button (click)="addToFavorites()">add to favorites</button>
     </div>
