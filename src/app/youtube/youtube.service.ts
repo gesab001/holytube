@@ -15,7 +15,8 @@ export class YoutubeService {
 
   private handleError: HandleError;
   url_videos_from_channel = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title,channelId, thumbnails(default(url))))&part=snippet,id&order=date&maxResults=10&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&channelId=';
-  url_latest_videos = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title,channelId,thumbnails(default(url)))))&pkey=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&q=art=snippet&channelId=UCo7QR7fmX24_uxcFJ6fSdNA&q=-Hilari&order=date&type=video&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&maxResults=';
+
+  url_latest_videos = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title,channelId,%20thumbnails(default(url))))&part=snippet,id&order=date&maxResults=10&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&channelId=UCo7QR7fmX24_uxcFJ6fSdNA&q=-Hilari&order=date&type=video&maxResults=';
   url_search = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title,channelId,thumbnails(default(url))))&part=snippet&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&q=';  
   url_related_videos = "https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId), snippet(title, channelId, thumbnails(default(url))))&part=snippet&type=video&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&q=&relatedToVideoId=";
 
@@ -44,7 +45,7 @@ export class YoutubeService {
     this.clearCache();
     if (!this._data) {
       this._data = this.http
-        .get(this.url_latest_videos+numberofvideos)
+        .get(this.url_latest_videos+numberofvideos.toString())
         .pipe(publishReplay(1), refCount());
     }
     return this._data;

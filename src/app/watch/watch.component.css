@@ -69,6 +69,7 @@
 
 .more-videos-thumbnails{
 	padding: 20px;
+	cursor: pointer;
 }
 .controls {
    position: absolute;	

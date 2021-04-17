@@ -17,7 +17,7 @@
 		<div class="more-videos-items"  >
 
 		<!--  <a class="more-videos-thumbnails" *ngFor="let item of relatedVideos" [routerLink]="['/watch', item.id.videoId, item.title, channelId]" routerLinkActive="active"><img  src="https://img.youtube.com/vi/{{item.id.videoId}}/default.jpg"/></a>-->
-		  <img  *ngFor="let item of relatedVideos" (click)="playRelatedVideo(item.id.videoId, item.title, channelId)" src="https://img.youtube.com/vi/{{item.id.videoId}}/default.jpg"/>
+		  <img class="more-videos-thumbnails" *ngFor="let item of relatedVideos" (click)="playRelatedVideo(item.id.videoId, item.title, channelId)" src="https://img.youtube.com/vi/{{item.id.videoId}}/default.jpg"/>
 			   
 		</div>	
 	</div>
