@@ -12,7 +12,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  channelId = "UCo7QR7fmX24_uxcFJ6fSdNA";
   data: any; 
   numberofvideos:number;
   subscription;

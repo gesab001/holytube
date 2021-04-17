@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'results/:keyword', component: YoutubeComponent},
   {path: 'search', component: SearchComponent},
-  {path: 'watch/:videoId/:title', component: WatchComponent},
+  {path: 'watch/:videoId/:title/:channelId', component: WatchComponent},
   {path: 'favorites', component: FavoritesComponent},
   {path: 'history', component: HistoryComponent},
   {path: 'settings', component: SettingsComponent}

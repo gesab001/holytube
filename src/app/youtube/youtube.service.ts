@@ -14,8 +14,12 @@ export class YoutubeService {
   _data: any = null;
 
   private handleError: HandleError;
-  url_latest_videos = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title))&part=snippet&channelId=UCo7QR7fmX24_uxcFJ6fSdNA&q=-Hilari&order=date&type=video&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&maxResults=';
-  url = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title))&part=snippet&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&q=';  constructor(
+  url_videos_from_channel = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title,channelId, thumbnails(default(url))))&part=snippet,id&order=date&maxResults=10&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&channelId=';
+  url_latest_videos = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title,channelId,thumbnails(default(url)))))&pkey=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&q=art=snippet&channelId=UCo7QR7fmX24_uxcFJ6fSdNA&q=-Hilari&order=date&type=video&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&maxResults=';
+  url_search = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title,channelId,thumbnails(default(url))))&part=snippet&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&q=';  
+  url_related_videos = "https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId), snippet(title, channelId, thumbnails(default(url))))&part=snippet&type=video&key=AIzaSyA6xZqvU8GsCuu_qKbnUZVv2ddxLdyiLpA&q=&relatedToVideoId=";
+
+  constructor(
     private http: HttpClient,
     httpErrorHandler: HttpErrorHandler) {
     this.handleError = httpErrorHandler.createHandleError('YoutubeService');
@@ -27,10 +31,10 @@ export class YoutubeService {
 
 
   getData(limit: number, keyword: string) {
-    //this.clearCache();
+    this.clearCache();
     if (!this._data) {
       this._data = this.http
-        .get(this.url+keyword+"&maxResults="+limit.toString())
+        .get(this.url_search+keyword+"&maxResults="+limit.toString())
         .pipe(publishReplay(1), refCount());
     }
     return this._data;
@@ -46,6 +50,26 @@ export class YoutubeService {
     return this._data;
   }
 
+  getRelatedVideosFromSameChannel(channelId){
+    this.clearCache();
+    if (!this._data) {
+      this._data = this.http
+        .get(this.url_videos_from_channel+channelId)
+        .pipe(publishReplay(1), refCount());
+    }
+    return this._data;	  
+  }
+
+  getRelatedVideos(videoId){
+    this.clearCache();
+    if (!this._data) {
+      this._data = this.http
+        .get(this.url_related_videos+videoId)
+        .pipe(publishReplay(1), refCount());
+    }
+    return this._data;	  
+  }
+  
   getCachedData(){
           return this._data;
   }
