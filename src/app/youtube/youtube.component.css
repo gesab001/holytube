@@ -1,0 +1,12 @@
+.thumbnail{
+	cursor: pointer;
+}
+
+.thumbnail-description{
+	cursor: pointer;
+}
+
+.thumbnail-description:hover{
+	color: blue;
+	
+}

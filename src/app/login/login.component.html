@@ -1,0 +1,35 @@
+<div style="width=100%; height: 100%; background-color: yellow; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+
+<div>
+<button class="login-button">Login in with Phone</button>
+
+<button class="login-button">Login in with Google</button>
+
+<button class="login-button">Login in with Github</button>
+
+<button class="login-button">Login in with Yahoo</button>
+
+<button class="login-button">Login in with TWitter</button>
+
+<button class="login-button">Login in with Microsoft</button>
+</div>
+
+
+<div style="text-align: center; width:100%">
+	<div class="login-form-container" >
+		
+		<div class="email-input"><input type="email" placeholder="email"/></div>	
+		<div style="text-align: left">
+			<div><input type="password" placeholder="password"/></div>	
+			<div><div style="color:#007bff" (click)="goToForgotPassword()">Forgot password?</div></div>
+        </div>
+		<div class="password-input">	<input type="submit" value="Log in"/></div>
+
+	</div>
+
+	<div style="margin-top: 30px">
+		Don't have an account? <span style="color:#007bff"  (click)="goToSignup()">Sign up</span>
+	</div>
+</div>
+
+</div>

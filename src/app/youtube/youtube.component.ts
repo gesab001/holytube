@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Youtube } from './youtube';
 import { YoutubeService } from './youtube.service';
 import { LocalstorageService } from '../localstorage/localstorage.service';
@@ -23,7 +23,7 @@ export class YoutubeComponent implements OnInit {
   subscription;
   datahistory: any = {};
 
-  constructor(private localstorageService: LocalstorageService, private route: ActivatedRoute, private youtubeService: YoutubeService, private sanitizer: DomSanitizer) {}
+  constructor(private router: Router, private localstorageService: LocalstorageService, private route: ActivatedRoute, private youtubeService: YoutubeService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
      this.setSearchResultsLimit();
@@ -44,7 +44,7 @@ export class YoutubeComponent implements OnInit {
  setSearchResultsLimit(){
     var jsondata = this.localstorageService.get("searchvideoslimit");
 	this.numberofsearchresults = jsondata["limit"];
-    alert(this.numberofsearchresults);
+   // alert(this.numberofsearchresults);
  }	
  
  loadData(keyword: string) {
@@ -54,6 +54,12 @@ export class YoutubeComponent implements OnInit {
     );
   }
 
+ watchVideo(videoId, title, channelId){
+	 console.log("watch video");
+	 console.log(title);
+	  this.router.navigate(['/watch', videoId, title, channelId]).then(page => { window.location.reload(); });
+
+ }
 
   public getSafeSrc(videoId: string): SafeResourceUrl {
      this.stringurl = "https://www.youtube.com/embed/"+videoId;

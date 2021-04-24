@@ -6,10 +6,19 @@ a {
   color: #0000FF; 
 }
 
+.flex-column:active > *{
+  color: #0000FF; 
+}
+
+.flex-column:focus > *{
+  color: #0000FF; 
+}
+
 a, .fa, .material-icons {
   color: #808080;
 }
 
+.fa
 .material-icons{
    font-size:30px;
 }

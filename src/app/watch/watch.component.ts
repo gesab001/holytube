@@ -10,7 +10,9 @@ import { YoutubeService } from '../youtube/youtube.service';
   styleUrls: ['./watch.component.css']
 })
 export class WatchComponent implements OnInit, AfterViewInit {
-  paused = false;
+
+  paused = true;
+  firstTimeVideoLoaded = true;
   public YT: any;
   public video: any;
   public player: any;
@@ -25,19 +27,24 @@ export class WatchComponent implements OnInit, AfterViewInit {
   subscription;
   banned: Boolean = false;
   bannedVideos: any;
+  timer;
+  videoLength = 0;
+  currentPosition =  "";
+  openRelatedVideosPanel: Boolean = false;
+  
  constructor(private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer, private youtubeService: YoutubeService) {}
 
  ngOnInit(): void {
      this.bannedVideos = this.getData();
      this.route.paramMap.subscribe(params => { 
         this.videoId = params.get('videoId');
+		this.title = params.get('title');
+		this.channelId = params.get('channelId');
+	    this.relatedVideos = null;
 		this.video = this.videoId;
-		if(this.channelId!=params.get('channelId')){
-			this.relatedVideos = null;
-		}
-        this.channelId = params.get('channelId');
-		console.log("channelId:" + this.channelId);
-        this.title = params.get('title');
+	    this.getRelatedVideos();
+
+
         if (this.bannedVideos.includes(this.videoId)){
            this.banned = true;
         }
@@ -50,7 +57,6 @@ export class WatchComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit(): void {
-	    //this.draw();
 		this.init();
   }
 
@@ -59,53 +65,80 @@ export class WatchComponent implements OnInit, AfterViewInit {
     tag.src = 'https://www.youtube.com/iframe_api';
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
     /* 3. startVideo() will create an <iframe> (and YouTube player) after the API code downloads. */
     window['onYouTubeIframeAPIReady'] = () => this.startVideo();
+	
   }
-  
+ 
+ 
+ getTime(value){
+    var date = new Date(0);
+	date.setSeconds(value);
+	var timeString = date.toLocaleString('en-US', {minute: 'numeric', second:'numeric'});
+	if(value>3599){
+     	timeString = date.toLocaleString('en-US', {hour12: false, hour: 'numeric', minute: 'numeric', second:'numeric'});		
+	}
+
+	return timeString;
+ }
+ 
+
   playRelatedVideo(videoId, title, channelId){
-	  console.log("play related video");
-	  console.log("videoId" + videoId);
-	  console.log("title"  + title);
-	  console.log("channelId" + channelId);
 	  this.router.navigate(['/watch', videoId, "title", channelId]).then(page => { window.location.reload(); });
   }
   
-   getRelatedVideos() {
-	 console.log("get relatedVideos");  
-    this.subscription = this.youtubeService.getRelatedVideos(this.videoId).subscribe(
-      res => (this.relatedVideos = res["items"]), 
-      error => console.log(error),
-    );
+  closeMoreVideosPanel(){
+	  this.openRelatedVideosPanel = false;
+  }
+  getRelatedVideos() {
+	console.log("get relatedVideos");  
+	
+		this.subscription = this.youtubeService.getRelatedVideosFromSameChannel(this.channelId).subscribe(
+		  res => (this.relatedVideos = res["items"]), 
+		  error => console.log(error),
+		);
+	
   }
   
-  getRelatedVideosFromSameChannel() {
-	 console.log("get relatedVideos");  
-    this.subscription = this.youtubeService.getRelatedVideosFromSameChannel(this.channelId).subscribe(
-      res => (this.relatedVideos = res["items"]), 
-      error => console.log(error),
-    );
-  }
+   play(){
+	   this.player.playVideo();
+	   clearInterval(this.timer);
+	   this.timer = setInterval(() => {this.updateTimer();}, 1);
+   }
   
-  playYoutubeVideo(){
-	  console.log("play video");
-	  console.log(this.player);
-	  this.player.playVideo();
-	  this.paused = false;
-  }
-
-  pauseYoutubeVideo(){
-	  console.log();
-	  console.log(this.player);
-	  this.player.pauseVideo();
-	  this.paused = true;
-	  if(this.relatedVideos==null){
-		  this.getRelatedVideosFromSameChannel();
+  togglePlayPause(){
+	  if(this.paused){
+		  this.play();
+		  this.paused = false;
+	  }else{
+		  this.pause();
+		  this.paused = true;
 	  }
-	  //this.getRelatedVideos();
   }
   
+  updateTimer(){
+	   this.currentPosition = this.player.getCurrentTime();
+	  console.log(this.currentPosition);
+  }
+  pause(){
+    clearInterval(this.timer);
+	this.player.pauseVideo();
+    this.openRelatedVideosPanel = true;
+
+  }
+  
+  onSliderInputChange(event){
+	  console.log(event.value);
+	  this.player.seekTo(event.value, true);
+	  this.currentPosition = this.getTime(event.value);
+  }
+  
+ 
+  
+
+ 
+
+
   startVideo() {
     this.reframed = false;
     this.player = new window['YT'].Player('player', {
@@ -128,38 +161,33 @@ export class WatchComponent implements OnInit, AfterViewInit {
         'onReady': this.onPlayerReady.bind(this),
       }
     });
+
   }
 
   /* 4. It will be called when the Video Player is ready */
   onPlayerReady(event) {
     event.target.playVideo();
   }
+ 
 
   onPlayerStateChange(event) {
     console.log(event)
     switch (event.data) {
       case window['YT'].PlayerState.PLAYING:
-        if (this.cleanTime() == 0) {
-          console.log('started ' + this.cleanTime());
-        } else {
-          console.log('playing ' + this.cleanTime())
-        };
+        console.log("started playing");
+		this.openRelatedVideosPanel = false;
         break;
       case window['YT'].PlayerState.PAUSED:
-        if (this.player.getDuration() - this.player.getCurrentTime() != 0) {
-          console.log('paused' + ' @ ' + this.cleanTime());
-        };
+        console.log("video paused");
+
         break;
       case window['YT'].PlayerState.ENDED:
         console.log('ended ');
+		this.openRelatedVideosPanel = true;
         break;
     }
   }
  
-  cleanTime() {
-    return Math.round(this.player.getCurrentTime())
-  }
-
   onPlayerError(event) {
     switch (event.data) {
       case 2:

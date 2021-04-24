@@ -10,21 +10,36 @@
 
  <div *ngSwitchCase="false" class="youtube-container">
    <div id="player" class="player-container"></div>
-   <div class="hide-youtube-links"></div>
+   <div (click)="togglePlayPause()" class="hide-youtube-links"></div>
  
  
-    <div *ngIf="paused" class="more-videos">
-		<div class="more-videos-items"  >
+   <div  *ngIf="openRelatedVideosPanel" class="more-videos">
+        <div style="padding: 10px; display: flex; flex-direction: row; justify-content: flex-end; width: 100%;"> 
+   	    <mat-icon (click)="closeMoreVideosPanel()" class="closeMoreVideos" >close</mat-icon>
+		</div>
+        <div style="position:relative; width:100%; height: 100%; background-color: red;">
+           <div style="position: absolute; left:0px; top:0px; overflow: scroll; width: 100%; height: 100%;">
+			<div class="more-videos-items"  >
 
-		<!--  <a class="more-videos-thumbnails" *ngFor="let item of relatedVideos" [routerLink]="['/watch', item.id.videoId, item.title, channelId]" routerLinkActive="active"><img  src="https://img.youtube.com/vi/{{item.id.videoId}}/default.jpg"/></a>-->
-		  <img class="more-videos-thumbnails" *ngFor="let item of relatedVideos" (click)="playRelatedVideo(item.id.videoId, item.title, channelId)" src="https://img.youtube.com/vi/{{item.id.videoId}}/default.jpg"/>
-			   
+			   <figure  class="more-videos-thumbnails" *ngFor="let item of relatedVideos" (click)="playRelatedVideo(item.id.videoId, item.snippet.title, channelId)">
+				  <img src="https://img.youtube.com/vi/{{item.id.videoId}}/default.jpg" alt="{{item.title}}"/>
+				  <figcaption>{{item.snippet.title}}</figcaption>
+				</figure> 	   
+			</div>	
+		   </div>	
 		</div>	
-	</div>
+	</div> 
 
    <div class="controls">
-       <button (click)="playYoutubeVideo()">Play</button>
-	   <button (click)="pauseYoutubeVideo()">Pause</button>
+   		<div class="slidecontainer">
+		  <mat-slider (input)="onSliderInputChange($event)" min="0" max="{{this.player.getDuration()}}" step="1" value="{{currentPosition}}"></mat-slider>
+
+		</div>
+	   <div class="control-buttons">	
+		    <div *ngIf="paused"><i (click)="togglePlayPause()" class="fa fa-play fa-2x mw-100"></i> </div>
+			<div *ngIf="paused==false"><i (click)="togglePlayPause()" class="fa fa-pause fa-2x mw-100"></i></div> 
+		    <div><span > {{getTime(currentPosition)}} / {{getTime(this.player.getDuration())}}</span ></div>
+		</div>
    </div>
 
 	   <!--
