@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1620103156429,
+  "timestamp": 1620146164897,
   "index": "/holytube/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "/holytube/favicon.ico",
         "/holytube/index.html",
-        "/holytube/main-es2015.adb249795f95c251a62f.js",
-        "/holytube/main-es5.adb249795f95c251a62f.js",
+        "/holytube/main-es2015.db49565a699a947cea19.js",
+        "/holytube/main-es5.db49565a699a947cea19.js",
         "/holytube/manifest.webmanifest",
         "/holytube/polyfills-es2015.f332a089ad1600448873.js",
         "/holytube/polyfills-es5.177e85a9724683782539.js",
@@ -26,6 +26,8 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
+        "/holytube/Trace-lxy0.b27e08e20019f99e7373.ttf",
+        "/holytube/assets/fonts/Trace-lxy0.ttf",
         "/holytube/assets/icons/icon-114x114.png",
         "/holytube/assets/icons/icon-120x120.png",
         "/holytube/assets/icons/icon-128x128.png",
@@ -45,6 +47,8 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/holytube/Trace-lxy0.b27e08e20019f99e7373.ttf": "d587f2df246e42fe1a9ad15c0855151ee8592823",
+    "/holytube/assets/fonts/Trace-lxy0.ttf": "d587f2df246e42fe1a9ad15c0855151ee8592823",
     "/holytube/assets/icons/icon-114x114.png": "87defce9bc494b54ef9e78d7efd030f5afbbcf6e",
     "/holytube/assets/icons/icon-120x120.png": "adb9fa54b42940ee1b28bbbab6b9a93bbfb55234",
     "/holytube/assets/icons/icon-128x128.png": "59751bab59df8e6d5545762134a9da8d3a17e969",
@@ -59,9 +63,9 @@
     "/holytube/assets/icons/icon-76x76.png": "c19faaa7a3c45183def21a51b217f71d5a5d5b10",
     "/holytube/assets/icons/icon-96x96.png": "649fa6ba94fe1d3d2e1ffa2f1fe7eed4eaca61a7",
     "/holytube/favicon.ico": "72bbce50c2c8c7578e7418f329ce080af9cffff5",
-    "/holytube/index.html": "9f602ce569526ef3ae7e9b421006e598e75ab83a",
-    "/holytube/main-es2015.adb249795f95c251a62f.js": "754910da41c479f4c621024888e83a9e8c4a0515",
-    "/holytube/main-es5.adb249795f95c251a62f.js": "aa510abf0ea7224c1b2be0919c3a3a80d8ec2bb9",
+    "/holytube/index.html": "1ddeb1f5ebfdbb769c97c7fc7a6c14a093dad58b",
+    "/holytube/main-es2015.db49565a699a947cea19.js": "fc5bd076afb6aeee10d9a741fd2167305776e6be",
+    "/holytube/main-es5.db49565a699a947cea19.js": "0520e866952392e0469ad9f2fc4dbc4cf5e9420e",
     "/holytube/manifest.webmanifest": "f8a7a76ad9db67569a66898f11313745674ed934",
     "/holytube/polyfills-es2015.f332a089ad1600448873.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
     "/holytube/polyfills-es5.177e85a9724683782539.js": "8aa26ea87b9958c6bd13b7c257c0e9940438e684",
