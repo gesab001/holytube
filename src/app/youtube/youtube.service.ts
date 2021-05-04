@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { Observable } from 'rxjs';
-
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 import { tap } from 'rxjs/operators';
@@ -50,12 +49,22 @@ export class YoutubeService {
     return videoData;
   }
   
-  getLatestVideos(numberofvideos) {
+  getLatestVideos(numberofvideos): Observable<any[]> {
     this.clearCache();
     if (!this._data) {
       this._data = this.http
         .get(this.url_latest_videos+numberofvideos.toString() + this.apiKey)
-        .pipe(publishReplay(1), refCount());
+        .pipe(publishReplay(1), refCount(), 
+			  catchError((err) => {
+			  console.log('error caught in service')
+			  console.error(err);
+	 
+			  //Handle the error here
+	 
+			      //Rethrow it back to component
+			  return throwError(err);
+			})
+        );
     }
     return this._data;
   }

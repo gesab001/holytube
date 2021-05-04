@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
  loadData() {
     this.subscription = this.youtubeService.getLatestVideos(this.numberofvideos).subscribe(
       res => (this.data = res["items"]), 
-      error => console.log(error),
+      error => alert(error.error.error.errors[0].reason),
     );
   }
   
