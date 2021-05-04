@@ -1,59 +1,58 @@
-<div  [ngSwitch]="banned" class="video-container">
-    <div *ngSwitchCase="true">
-          <p>this video is unholy!</p>
-          <h1>List of banned video ids</h1>
-          <ol>
-            <li *ngFor="let item of bannedVideos">{{item}}</li>
-          </ol>
 
-    </div>
+	<div  [ngSwitch]="banned" class="video-container">
+		<div *ngSwitchCase="true">
+			  <p>this video is unholy!</p>
+			  <h1>List of banned video ids</h1>
+			  <ol>
+				<li *ngFor="let item of bannedVideos">{{item}}</li>
+			  </ol>
 
- <div *ngSwitchCase="false" class="youtube-container">
-   <div id="player" class="player-container"></div>
-   <div (click)="togglePlayPause()" class="hide-youtube-links"></div>
- 
- 
-   <div  *ngIf="openRelatedVideosPanel" class="more-videos">
-        <div style="padding: 10px; display: flex; flex-direction: row; justify-content: flex-end; width: 100%;"> 
-   	    <mat-icon (click)="closeMoreVideosPanel()" class="closeMoreVideos" >close</mat-icon>
 		</div>
-        <div style="position:relative; width:100%; height: 100%; background-color: red;">
-           <div style="position: absolute; left:0px; top:0px; overflow: scroll; width: 100%; height: 100%;">
-			<div class="more-videos-items"  >
 
-			   <figure  class="more-videos-thumbnails" *ngFor="let item of relatedVideos" (click)="playRelatedVideo(item.id.videoId, item.snippet.title, channelId)">
-				  <img src="https://img.youtube.com/vi/{{item.id.videoId}}/default.jpg" alt="{{item.title}}"/>
-				  <figcaption>{{item.snippet.title}}</figcaption>
-				</figure> 	   
+	 <div *ngSwitchCase="false" class="youtube-container">
+	   <div id="player" class="player-container"></div>
+	 
+	   
+	   <div (click)="togglePlayPause()" class="hide-youtube-links">
+	     <div class="whiteboard-container"><app-whiteboard *ngIf="showWhiteBoard"></app-whiteboard></div>
+	   </div>
+	 
+	 
+	   <div  *ngIf="openRelatedVideosPanel" class="more-videos">
+			<div style="padding: 10px; display: flex; flex-direction: row; justify-content: flex-end; width: 100%;"> 
+			<mat-icon (click)="closeMoreVideosPanel()" class="closeMoreVideos" >close</mat-icon>
+			</div>
+			<div style="position:relative; width:100%; height: 100%; background-color: red;">
+			   <div style="position: absolute; left:0px; top:0px; overflow: scroll; width: 100%; height: 100%;">
+				<div class="more-videos-items"  >
+
+				   <figure  class="more-videos-thumbnails" *ngFor="let item of relatedVideos" (click)="playRelatedVideo(item.id.videoId, item.snippet.title, channelId)">
+					  <img src="https://img.youtube.com/vi/{{item.id.videoId}}/default.jpg" alt="{{item.title}}"/>
+					  <figcaption>{{item.snippet.title}}</figcaption>
+					</figure> 	   
+				</div>	
+			   </div>	
 			</div>	
-		   </div>	
-		</div>	
-	</div> 
+		</div> 
 
-   <div class="controls">
-   		<div class="slidecontainer">
-		  <mat-slider (input)="onSliderInputChange($event)" min="0" max="{{this.player.getDuration()}}" step="1" value="{{currentPosition}}"></mat-slider>
+	   <div class="controls">
+			<div class="slidecontainer">
+			  <mat-slider (input)="onSliderInputChange($event)" min="0" max="{{this.player.getDuration()}}" step="1" value="{{currentPosition}}"></mat-slider>
 
-		</div>
-	   <div class="control-buttons">	
-		    <div *ngIf="paused"><i (click)="togglePlayPause()" class="fa fa-play fa-2x mw-100"></i> </div>
-			<div *ngIf="paused==false"><i (click)="togglePlayPause()" class="fa fa-pause fa-2x mw-100"></i></div> 
-		    <div><span > {{getTime(currentPosition)}} / {{getTime(this.player.getDuration())}}</span ></div>
-		</div>
-   </div>
+			</div>
+		   <div class="control-buttons">	
+				<div *ngIf="paused"><i (click)="togglePlayPause()" class="fa fa-play fa-2x mw-100"></i> </div>
+				<div *ngIf="paused==false"><i (click)="togglePlayPause()" class="fa fa-pause fa-2x mw-100"></i></div> 
+				
 
-	   <!--
-            <div class="hide-top-cover">test</div>
+				<div><span > {{getTime(currentPosition)}} / {{getTime(this.player.getDuration())}}</span ></div>
+				<div><i (click)="toggleWhiteBoard()" class="fa fa-edit fa-2x mw-100"></i></div> 
+				
+			</div>
+	   </div>
 
-            <iframe #playerEl id="player" class="iframe" [src]="safeSrc" title="W3Schools Free Online Web Tutorials" >
-            </iframe>
-						         <!--   <div class="hide-more-videos-cover">test</div>
 
-			           
-           
-    </div>-->
-
-</div>
+	</div>
 
 
 

@@ -31,6 +31,7 @@ export class WatchComponent implements OnInit, AfterViewInit {
   videoLength = 0;
   currentPosition =  "";
   openRelatedVideosPanel: Boolean = false;
+  showWhiteBoard: Boolean = false;
   
  constructor(private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer, private youtubeService: YoutubeService) {}
 
@@ -100,6 +101,15 @@ export class WatchComponent implements OnInit, AfterViewInit {
 	
   }
   
+  toggleWhiteBoard(){
+	  if(this.showWhiteBoard){		
+		  this.showWhiteBoard = false;
+	  }else{
+		
+		  this.showWhiteBoard = true;
+	  }    
+	  
+  }
    play(){
 	   this.player.playVideo();
 	   clearInterval(this.timer);

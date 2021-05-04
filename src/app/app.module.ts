@@ -28,6 +28,7 @@ import { FirebaseComponent } from './firebase/firebase.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { WhiteboardComponent } from './whiteboard/whiteboard.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
     FirebaseComponent,
     LoginComponent,
     SignupComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    WhiteboardComponent
   ],
   imports: [
     BrowserModule,

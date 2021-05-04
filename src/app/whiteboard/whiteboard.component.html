@@ -1,0 +1,12 @@
+<!--<div> <input (keyup)="onKey($event)">
+   
+    <button class="buttons" (click)="onClickMe()">Create</button>
+	<button class="buttons" (click)="decreaseFont()">Smaller</button>
+	<button class="buttons" (click)="increaseFont()">Bigger</button>
+    <p>{{currX}}, {{currY}}</p> 
+
+</div>-->
+<div class="whiteboard">
+<canvas  (touchmove)='move($event)' (touchstart)='down($event)' (touchend)='out($event)' (mousemove)='move($event)' (mousedown)='down($event)' (mouseup)='out($event)' (mouseout)='out($event)'   #canvasEl width=100% height=100% style="border:1px solid #c3c3c3;"></canvas>
+</div> 
+<router-outlet></router-outlet>

@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Trace-lxy0';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../../assets/fonts/Trace-lxy0.ttf');
+}
+
+.buttons{
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.whiteboard {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
