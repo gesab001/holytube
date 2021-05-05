@@ -36,7 +36,7 @@ export class WhiteboardComponent implements AfterViewInit {
   ngAfterViewInit(): void {
 	this.canvas =  this.canvasEl.nativeElement as HTMLCanvasElement;
 	this.context = this.canvas.getContext('2d');
-	this.canvasWidth = window.innerWidth - 50;
+	this.canvasWidth = window.innerWidth + 50;
 	this.canvasHeight = window.innerHeight - 100;
 	this.context.canvas.width  = this.canvasWidth;
     this.context.canvas.height = this.canvasHeight;

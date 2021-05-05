@@ -12,9 +12,13 @@
 	 <div *ngSwitchCase="false" class="youtube-container">
 	   <div id="player" class="player-container"></div>
 	 
-	   
-	   <div (click)="togglePlayPause()" class="hide-youtube-links">
-	     <div class="whiteboard-container"><app-whiteboard *ngIf="showWhiteBoard"></app-whiteboard></div>
+		<div class="top-layer-bottom-right">	   </div>	
+	    <div class="top-layer-top-right"><h1>HOLYTUBE</h1></div>
+	
+   
+	   <div class="top-layer">
+		 <div (click)="togglePlayPause()" class="hide-youtube-links"></div>  
+	     <div class="whiteboard-container" *ngIf="showWhiteBoard"><app-whiteboard ></app-whiteboard></div>
 	     
 	   </div>
 	 

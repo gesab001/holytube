@@ -133,8 +133,8 @@ export class WatchComponent implements OnInit, AfterViewInit {
   pause(){
   
     clearInterval(this.timer);
-	//this.player.pauseVideo();
-	this.timer = setInterval(() => {this.player.seekTo(this.currentPosition);}, 1);
+	this.player.pauseVideo();
+	//this.timer = setInterval(() => {this.player.seekTo(this.currentPosition);}, 1000);
    
 
   }
