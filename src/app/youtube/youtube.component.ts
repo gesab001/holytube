@@ -50,7 +50,7 @@ export class YoutubeComponent implements OnInit {
  loadData(keyword: string) {
     this.subscription = this.youtubeService.getData(this.numberofsearchresults, keyword).subscribe(
       res => (this.data = res["items"], this.datahistory[this.keyword] = this.data, this.youtubeService.savePastSearchResults(this.datahistory),      this.datahistory = this.youtubeService.getPastSearchResults()), 
-      error => console.log(error),
+      error => alert(error.error.error.errors[0].reason),
     );
   }
 

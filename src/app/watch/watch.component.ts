@@ -96,7 +96,7 @@ export class WatchComponent implements OnInit, AfterViewInit {
 	
 		this.subscription = this.youtubeService.getRelatedVideosFromSameChannel(this.channelId).subscribe(
 		  res => (this.relatedVideos = res["items"]), 
-		  error => console.log(error),
+		  error => alert(error.error.error.errors[0].reason),
 		);
 	
   }

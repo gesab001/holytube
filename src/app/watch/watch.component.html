@@ -15,6 +15,7 @@
 	   
 	   <div (click)="togglePlayPause()" class="hide-youtube-links">
 	     <div class="whiteboard-container"><app-whiteboard *ngIf="showWhiteBoard"></app-whiteboard></div>
+	     
 	   </div>
 	 
 	 
@@ -36,10 +37,7 @@
 		</div> 
 
 	   <div class="controls">
-			<div class="slidecontainer">
-			  <mat-slider (input)="onSliderInputChange($event)" min="0" max="{{this.player.getDuration()}}" step="1" value="{{currentPosition}}"></mat-slider>
-
-			</div>
+			
 		   <div class="control-buttons">	
 				<div *ngIf="paused"><i (click)="togglePlayPause()" class="fa fa-play fa-2x mw-100"></i> </div>
 				<div *ngIf="paused==false"><i (click)="togglePlayPause()" class="fa fa-pause fa-2x mw-100"></i></div> 

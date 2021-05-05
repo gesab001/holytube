@@ -12,6 +12,7 @@ import {publishReplay, refCount} from 'rxjs/operators';
 export class YoutubeService {
   _data: any = null;
   private apiKey = "&key=AIzaSyD2YWxD7OdpUcux0GxqyHYCa8N4jk5-Eoo";
+  private apiKeySameChannel = "&key=AIzaSyDtYfNdzcemiuwbfB7tmNyT2vIp0MgyE_g";
   private apiKeySearch = "&key=AIzaSyASBk-yzLV2okPsPt3P0Ui9Wd9tMnnHcJA";
   private apiKeyHome = "&key=AIzaSyDdyEdV0DMLwbJkGCazuLryPT5cCdz6Kys";
   private handleError: HandleError;
@@ -37,7 +38,17 @@ export class YoutubeService {
     if (!this._data) {
       this._data = this.http
         .get(this.url_search+keyword+"&maxResults="+limit.toString()+this.apiKeySearch)
-        .pipe(publishReplay(1), refCount());
+        .pipe(publishReplay(1), refCount(),
+          catchError((err) => {
+			  console.log('error caught in service')
+			  console.error(err);
+	 
+			  //Handle the error here
+	 
+			      //Rethrow it back to component
+			  return throwError(err);
+			})
+        );
     }
     return this._data;
   }
@@ -75,8 +86,18 @@ export class YoutubeService {
     this.clearCache();
     if (!this._data) {
       this._data = this.http
-        .get(this.url_videos_from_channel+channelId + this.apiKey)
-        .pipe(publishReplay(1), refCount());
+        .get(this.url_videos_from_channel+channelId + this.apiKeySameChannel)
+        .pipe(publishReplay(1), refCount(),
+          catchError((err) => {
+			  console.log('error caught in service')
+			  console.error(err);
+	 
+			  //Handle the error here
+	 
+			      //Rethrow it back to component
+			  return throwError(err);
+			})
+        );
     }
     return this._data;	  
   }
