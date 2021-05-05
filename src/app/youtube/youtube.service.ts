@@ -12,6 +12,8 @@ import {publishReplay, refCount} from 'rxjs/operators';
 export class YoutubeService {
   _data: any = null;
   private apiKey = "&key=AIzaSyD2YWxD7OdpUcux0GxqyHYCa8N4jk5-Eoo";
+  private apiKeySearch = "&key=AIzaSyASBk-yzLV2okPsPt3P0Ui9Wd9tMnnHcJA";
+  private apiKeyHome = "&key=AIzaSyDdyEdV0DMLwbJkGCazuLryPT5cCdz6Kys";
   private handleError: HandleError;
   url_videos_from_channel = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title,channelId, thumbnails(default(url))))&part=snippet,id&order=date&maxResults=10&channelId=';
   url_video = "https://www.googleapis.com/youtube/v3/videos?fields=items(contentDetails(duration),statistics(viewCount),snippet(title,channelId,thumbnails(default(url))))&part=snippet,contentDetails,statistics";
@@ -34,7 +36,7 @@ export class YoutubeService {
     this.clearCache();
     if (!this._data) {
       this._data = this.http
-        .get(this.url_search+keyword+"&maxResults="+limit.toString()+this.apiKey)
+        .get(this.url_search+keyword+"&maxResults="+limit.toString()+this.apiKeySearch)
         .pipe(publishReplay(1), refCount());
     }
     return this._data;
@@ -43,7 +45,7 @@ export class YoutubeService {
     var videoData;
       if (!this._data) {
        videoData = this.http
-        .get(this.url_video + "&id="+videoId + this.apiKey)
+        .get(this.url_video + "&id="+videoId + this.apiKeySearch)
         .pipe(publishReplay(1), refCount());
     }
     return videoData;
@@ -53,7 +55,7 @@ export class YoutubeService {
     this.clearCache();
     if (!this._data) {
       this._data = this.http
-        .get(this.url_latest_videos+numberofvideos.toString() + this.apiKey)
+        .get(this.url_latest_videos+numberofvideos.toString() + this.apiKeyHome)
         .pipe(publishReplay(1), refCount(), 
 			  catchError((err) => {
 			  console.log('error caught in service')
