@@ -48,14 +48,15 @@
 	right: 0;
 }
 
-.top-layer-bottom-right{
+.top-layer-relatedVideos-cover{
 	position: absolute;
-	height: 65%;
-	width: 30%;
-	background-color: none;
-    top: 0;
+	height: 15%;
+	width: 100%;
+	background-color: red;
+    bottom: 17%;
 	right: 0;
 }
+
 
 .top-layer-top-right{
 	position: absolute;
