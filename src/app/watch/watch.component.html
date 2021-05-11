@@ -13,7 +13,8 @@
 	   <div id="player" class="player-container"></div>
 	 
 		<div class="top-layer-bottom-right">	   </div>	
-	    <div class="top-layer-top-right"><h1>HOLYTUBE</h1></div>
+	    <div class="top-layer-top-right"></div>
+	    <div class="top-layer-logo-cover"></div>
 	
    
 	   <div class="top-layer">
@@ -43,11 +44,11 @@
 	   <div class="controls">
 			
 		   <div class="control-buttons">	
-				<div *ngIf="paused"><i (click)="togglePlayPause()" class="fa fa-play fa-2x mw-100"></i> </div>
+			<!--	<div *ngIf="paused"><i (click)="togglePlayPause()" class="fa fa-play fa-2x mw-100"></i> </div>
 				<div *ngIf="paused==false"><i (click)="togglePlayPause()" class="fa fa-pause fa-2x mw-100"></i></div> 
 				
 
-				<div><span > {{getTime(currentPosition)}} / {{getTime(this.player.getDuration())}}</span ></div>
+				<div><span > {{getTime(currentPosition)}} / {{getTime(this.player.getDuration())}}</span ></div>-->
 				<div><i (click)="toggleWhiteBoard()" class="fa fa-edit fa-2x mw-100"></i></div> 
 				
 			</div>

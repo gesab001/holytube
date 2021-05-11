@@ -32,19 +32,28 @@
 
 .top-layer{
 	position: absolute;
-	height: 100%;
+	height: 82%;
 	width: 95%;
 	background-color: none;
     top: 0;
 	left: 0;
 }
 
+.top-layer-logo-cover {
+	position: absolute;
+	height: 50px;
+	width: 55px;
+	background-color: none;
+    bottom: 17%;
+	right: 0;
+}
+
 .top-layer-bottom-right{
 	position: absolute;
-	height: 25%;
+	height: 65%;
 	width: 30%;
 	background-color: none;
-    bottom: 0;
+    top: 0;
 	right: 0;
 }
 
