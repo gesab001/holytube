@@ -100,6 +100,16 @@ export class WatchComponent implements OnInit, AfterViewInit {
 		);
 	
   }
+ 
+  download() {
+	console.log("download");  
+	
+		this.subscription = this.youtubeService.download(this.videoId).subscribe(
+		  res => (alert("download complete")), 
+		  error => alert(error.error.error.errors[0].reason),
+		);
+	
+  }
   
   toggleWhiteBoard(){
 	  if(this.showWhiteBoard){		

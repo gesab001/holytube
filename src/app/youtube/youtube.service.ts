@@ -11,6 +11,7 @@ import {publishReplay, refCount} from 'rxjs/operators';
 })
 export class YoutubeService {
   _data: any = null;
+  url_download = "https://20.70.176.210/php/youtube/download.php?";
   private apiKey = "&key=AIzaSyD2YWxD7OdpUcux0GxqyHYCa8N4jk5-Eoo";
   private apiKeySameChannel = "&key=AIzaSyDtYfNdzcemiuwbfB7tmNyT2vIp0MgyE_g";
   private apiKeySearch = "&key=AIzaSyASBk-yzLV2okPsPt3P0Ui9Wd9tMnnHcJA";
@@ -170,6 +171,16 @@ export class YoutubeService {
       return jsondata;
   }
 
+  download(videoId){
+    this.clearCache();
+    if (!this._data) {
+      this._data = this.http
+        .get(this.url_download+ "videoId=https://www.youtube.com?v=" + videoId + "&filename=test.mp4")
+        .pipe(publishReplay(1), refCount());
+    }
+    return this._data;	  
+  }
+  
   getPastSearchResults(){
       var jsondata = {};
       if("pastSearchResults" in localStorage){

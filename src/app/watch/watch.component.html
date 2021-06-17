@@ -49,7 +49,8 @@
 				
 
 				<div><span > {{getTime(currentPosition)}} / {{getTime(this.player.getDuration())}}</span ></div>-->
-				<div><i (click)="toggleWhiteBoard()" class="fa fa-edit fa-2x mw-100"></i></div> 
+				<div><i (click)="toggleWhiteBoard()" class="fa fa-edit fa-2x mw-100"></i>
+				     <a href="http://20.70.176.210/php/youtube/download.php?videoId={{this.videoId}}&filename={{this.title}}"> <i class="fa fa-download fa-2x mw-100"></i></a></div> 
 				
 			</div>
 	   </div>

@@ -17,7 +17,7 @@ export class AppComponent {
 
   constructor (private logUpdateService: LogUpdateService){
 	  
-	  document.addEventListener(
+/*	  document.addEventListener(
 	    "visibilitychange",
 		() => {
 		  if (document.hidden){
@@ -29,7 +29,7 @@ export class AppComponent {
 		  }			  			  
 
 		}
-		);
+		);*/
   }
   
     ngOnInit(): void { 
