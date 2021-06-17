@@ -1,8 +1,8 @@
-
+<p>{{data | json}}</p>
 <ol >
 <div *ngFor="let item of data" >
 
-  <li> <a [routerLink]="['/watch', item.id.videoId, item.title, channelId]" routerLinkActive="active"><img src="https://img.youtube.com/vi/{{item.id.videoId}}/default.jpg"/>{{item.snippet.title}}</a></li>
+  <li> <a [routerLink]="['/watch', item.id.videoId, item.snippet.title, channelId]" routerLinkActive="active"><img src="https://img.youtube.com/vi/{{item.id.videoId}}/default.jpg"/>{{item.snippet.title}}</a></li>
        
 </div>
 
