@@ -32,21 +32,12 @@
 
 .top-layer{
 	position: absolute;
-	height: 75%;
+	height: 42em;
 	width: 95%;
-	background-color: none;
+	background-color: one;
     top: 0;
 	left: 0;
-}
 
-.top-layer-logo-cover {
-	position: absolute;
-	display: none;
-	height: 50px;
-	width: 55px;
-	background-color: none;
-    bottom: 17%;
-	right: 0;
 }
 
 .top-layer-relatedVideos-cover{
@@ -57,6 +48,48 @@
     bottom: 20%;
 	right: 0;
 }
+
+/* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+		  .top-layer {
+			  height: 65em;
+		  }
+}
+
+	/* Landscape */
+	@media only screen 
+	  and (min-device-width: 768px) 
+	  and (max-device-width: 1024px) 
+	  and (orientation: landscape) 
+	  and (-webkit-min-device-pixel-ratio: 2) {
+		  .top-layer {
+			  height: 46em;
+		  }
+		  .top-layer-relatedVideos-cover{
+				height: 5%;
+			  
+		  }
+
+	}
+	
+.top-layer-logo-cover {
+	position: absolute;
+	display: none;
+	height: 50px;
+	width: 55px;
+	background-color: none;
+    bottom: 17%;
+	right: 0;
+}
+
+
 
 
 .top-layer-top-right{
