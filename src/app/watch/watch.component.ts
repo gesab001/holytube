@@ -193,7 +193,7 @@ export class WatchComponent implements OnInit, AfterViewInit {
  
 
   onPlayerStateChange(event) {
-    console.log(event)
+    //console.log(event)
     switch (event.data) {
       case window['YT'].PlayerState.PLAYING:
         console.log("started playing");
@@ -201,6 +201,9 @@ export class WatchComponent implements OnInit, AfterViewInit {
         break;
       case window['YT'].PlayerState.PAUSED:
         console.log("video paused");
+      //  var suggestions = document.getElementsByClassName("ytp-suggestions");
+        //console.log("suggestions");
+       // console.log(document.getElementsByClassName("youtube-container")[0].childNodes[0]);
 
         break;
       case window['YT'].PlayerState.ENDED:
