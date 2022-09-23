@@ -256,5 +256,9 @@ export class WatchComponent implements OnInit, AfterViewInit {
 
 
   }
+  
+  public showVideoId(){
+	  alert(this.videoId);
+  }
 
 }
