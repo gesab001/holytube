@@ -258,7 +258,10 @@ export class WatchComponent implements OnInit, AfterViewInit {
   }
   
   public showVideoId(){
-	  alert(this.videoId);
+	  var download_url = "http://192.168.1.17:8086/music/download.php?youtube="+this.videoId;
+	  alert(download_url);
+      window.location.href = download_url;
+
   }
 
 }
