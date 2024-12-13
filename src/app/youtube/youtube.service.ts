@@ -19,7 +19,7 @@ export class YoutubeService {
   private handleError: HandleError;
   url_videos_from_channel = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title,channelId, thumbnails(default(url))))&part=snippet,id&order=date&maxResults=10&channelId=';
   url_video = "https://www.googleapis.com/youtube/v3/videos?fields=items(contentDetails(duration),statistics(viewCount),snippet(title,channelId,thumbnails(default(url))))&part=snippet,contentDetails,statistics";
-  url_latest_videos = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title,channelId,thumbnails(default(url))))&part=snippet,id&order=date&maxResults=10&channelId=UCo7QR7fmX24_uxcFJ6fSdNA&q=-Hilari&order=date&type=video&maxResults=';
+  url_latest_videos = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title,channelId,thumbnails(default(url))))&part=snippet,id&order=date&maxResults=10&channelId=UCzYV7j0i85BUenpki8Vv1UQ&order=date&type=video&maxResults=';
   url_search = 'https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId),snippet(title,channelId,thumbnails(default(url))))&part=snippet&q=';  
   url_related_videos = "https://www.googleapis.com/youtube/v3/search?fields=items(id(videoId), snippet(title, channelId, thumbnails(default(url))))&part=snippet&type=video&q=&relatedToVideoId=";
 

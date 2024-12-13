@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
  ngOnInit(): void {
       this.numberofvideos = this.getVideoLimit() ;
-      this.loadData();
+      //this.loadData();
 	  
   }
 
